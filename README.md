@@ -1,4 +1,4 @@
-KeyboardVisibilityChangeEvent
+KeyboardVisibilityEvent
 ===
 
 Android Library to handle soft keyboard visibility change event.
@@ -13,19 +13,6 @@ show/hide keyboard method is also included.
 
 check out sample project!
 
-### Add to your dependencies
-
-AAR is distributed on the Maven Central repository
-
-```groovy
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile 'com.github.yshrsmz:keyboardvisiblityevent:1.0.0'
-}
-```
 
 ### Add event listener for keyboard change event
 
