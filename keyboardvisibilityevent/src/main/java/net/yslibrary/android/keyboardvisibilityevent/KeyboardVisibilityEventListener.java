@@ -1,4 +1,4 @@
-package net.yshrsmz.android.keyboardvisibilityevent;
+package net.yslibrary.android.keyboardvisibilityevent;
 
 /**
  * Created by yshrsmz on 15/03/17.

@@ -1,6 +1,6 @@
-package net.yshrsmz.android.keyboardvisibilityevent;
+package net.yslibrary.android.keyboardvisibilityevent;
 
-import net.yshrsmz.android.keyboardvisibilityevent.util.UIUtil;
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 import android.app.Activity;
 import android.graphics.Rect;

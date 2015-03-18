@@ -1,7 +1,7 @@
-package net.yshrsmz.android.sample.keyboardvisibilityevent;
+package net.yslibrary.android.sample.keyboardvisibilityevent;
 
-import net.yshrsmz.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yshrsmz.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

@@ -1,4 +1,4 @@
-package net.yshrsmz.android.keyboardvisibilityevent.util;
+package net.yslibrary.android.keyboardvisibilityevent.util;
 
 import android.app.Activity;
 import android.app.Dialog;

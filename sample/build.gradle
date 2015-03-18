@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.0"
 
     defaultConfig {
-        applicationId "net.yshrsmz.android.sample.keyboardvisibilityevent"
+        applicationId "net.yslibrary.android.sample.keyboardvisibilityevent"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

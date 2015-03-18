@@ -1,4 +1,4 @@
-package net.yshrsmz.android.sample.keyboardvisibilityevent;
+package net.yslibrary.keyboardvisibilityevent;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
