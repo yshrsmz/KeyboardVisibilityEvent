@@ -29,5 +29,5 @@ KeyboardVisibilityEvent.setEventListener(
 
 ## License
 
-http://yshrsmz.mit-license.org/
+http://www.apache.org/licenses/LICENSE-2.0.txt
 
