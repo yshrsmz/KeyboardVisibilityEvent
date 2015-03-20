@@ -21,7 +21,7 @@ public class UIUtil {
     }
 
     /**
-     * Show keyboard & focus to given EditText
+     * Show keyboard and focus to given EditText
      *
      * @param context Context
      * @param target  EditText to focus
@@ -37,7 +37,7 @@ public class UIUtil {
     }
 
     /**
-     * Show keyboard & focus to given EditText.
+     * Show keyboard and focus to given EditText.
      * Use this method if target EditText is in Dialog.
      *
      * @param dialog Dialog

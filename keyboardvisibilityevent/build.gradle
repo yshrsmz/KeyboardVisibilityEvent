@@ -25,3 +25,8 @@ dependencies {
 
 // from https://github.com/chrisbanes/gradle-mvn-push
 apply from: 'gradle-mvn-push.gradle'
+
+afterEvaluate {
+    androidJavadocs.classpath +=
+            project.android.libraryVariants.toList().first().javaCompile.classpath
+}

@@ -9,10 +9,23 @@ show/hide keyboard method is also included.
 - check if keyboard is currently visible
 - show/hide keyboard(check UIUtil.java)
 
+## Installation
+
+AAR is distributed on the Maven Central repository.
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:1.0.0'
+}
+```
+
 ## Usage
 
 check out sample project!
-
 
 ### Add event listener for keyboard change event
 
