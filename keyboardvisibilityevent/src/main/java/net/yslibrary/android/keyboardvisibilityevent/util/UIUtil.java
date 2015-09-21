@@ -12,7 +12,14 @@ import android.widget.EditText;
 /**
  * Created by yshrsmz on 15/03/17.
  */
-public class UIUtil {
+public final class UIUtil {
+    
+    /**
+     * Supresses instantiation 
+     */
+    private UIUtil() {
+        throw new AssertionError();
+    }
 
     public static float convertDpToPx(Context context, float dp) {
         Resources res = context.getResources();
