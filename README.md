@@ -1,3 +1,5 @@
+[![Android Gems](http://www.android-gems.com/badge/yshrsmz/KeyboardVisibilityEvent.svg?branch=master)](http://www.android-gems.com/lib/yshrsmz/KeyboardVisibilityEvent)
+
 KeyboardVisibilityEvent
 ===
 
