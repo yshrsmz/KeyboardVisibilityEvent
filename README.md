@@ -11,6 +11,8 @@ show/hide keyboard method is also included.
 - check if keyboard is currently visible
 - show/hide keyboard(check UIUtil.java)
 
+_Please note that as described in this [issue](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/1), currently the library cannot detect visibility change when the activity's `windowSoftInputMode` do not change Activity's height(such as `adjustNothing`)._
+
 ## Installation
 
 AAR is distributed on the Maven Central repository.
