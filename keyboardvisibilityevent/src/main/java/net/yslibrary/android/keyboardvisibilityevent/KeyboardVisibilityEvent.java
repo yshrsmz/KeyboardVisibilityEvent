@@ -17,7 +17,7 @@ public class KeyboardVisibilityEvent {
     private final static int KEYBOARD_VISIBLE_THRESHOLD_DP = 100;
 
     /**
-     * Set keyboard visiblity change event listener.
+     * Set keyboard visibility change event listener.
      *
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
