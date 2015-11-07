@@ -2,6 +2,7 @@ KeyboardVisibilityEvent
 ===
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-KeyboardVisibilityEvent-green.svg?style=flat)](https://android-arsenal.com/details/1/2519)
+[![Android Gems](http://www.android-gems.com/badge/yshrsmz/KeyboardVisibilityEvent.svg?branch=master)](http://www.android-gems.com/lib/yshrsmz/KeyboardVisibilityEvent)
 
 Android Library to handle soft keyboard visibility change event.
 show/hide keyboard method is also included.
