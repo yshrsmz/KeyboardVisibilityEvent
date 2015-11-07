@@ -1,16 +1,16 @@
 package net.yslibrary.android.sample.keyboardvisibilityevent;
 
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
-
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
+public class MainActivity extends AppCompatActivity {
 
     TextView mKeyboardStatus;
 
@@ -24,20 +24,18 @@ public class MainActivity extends ActionBarActivity {
         mKeyboardStatus = (TextView) findViewById(R.id.keyboard_status);
         mTextField = (EditText) findViewById(R.id.text_field);
 
-        KeyboardVisibilityEvent.setEventListener(this,
-                new KeyboardVisibilityEventListener() {
-                    @Override
-                    public void onVisibilityChanged(boolean isOpen) {
-                        updateKeyboardStatusText(isOpen);
-                    }
-                });
+        KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                updateKeyboardStatusText(isOpen);
+            }
+        });
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this));
     }
 
     private void updateKeyboardStatusText(boolean isOpen) {
-        mKeyboardStatus.setText(
-                String.format("keyboard is %s", (isOpen ? "visible" : "hidden")));
+        mKeyboardStatus.setText(String.format("keyboard is %s", (isOpen ? "visible" : "hidden")));
     }
 
     @Override

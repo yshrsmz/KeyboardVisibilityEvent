@@ -1,13 +1,12 @@
 package net.yslibrary.android.keyboardvisibilityevent;
 
-import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
-
 import android.app.Activity;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+
+import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 /**
  * Created by yshrsmz on 15/03/17.
@@ -22,9 +21,16 @@ public class KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
-    public static void setEventListener(
-            @NonNull final Activity activity,
-            @NonNull final KeyboardVisibilityEventListener listener) {
+    public static void setEventListener(final Activity activity,
+                                        final KeyboardVisibilityEventListener listener) {
+
+        if (activity == null) {
+            throw new NullPointerException("Parameter:activity must not be null");
+        }
+
+        if (listener == null) {
+            throw new NullPointerException("Parameter:listener must not be null");
+        }
 
         final View activityRoot = getActivityRoot(activity);
 
