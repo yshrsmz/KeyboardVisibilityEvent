@@ -12,3 +12,10 @@ If you come up with something nice to handle these situation, please help me :)
 
 
 If neither of these are true, please tell me your issue.
+
+You need to let me know:
+
+1. your Activity's `windowSoftInputMode`
+2. Android version
+3. Android device
+4. and other stuff you think might be helpful
