@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:1.0.0'
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:1.0.1'
 }
 ```
 
