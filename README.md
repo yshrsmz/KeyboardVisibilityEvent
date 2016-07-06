@@ -7,6 +7,11 @@ KeyboardVisibilityEvent
 Android Library to handle soft keyboard visibility change event.
 show/hide keyboard method is also included.
 
+## Library's status
+
+Currently I don't have enough time to maintain this library, so I leave this as it is.  
+I'm going to merge PRs when they arrive though ;)
+
 ## Features
 - handle keyboard visibility change
 - check if keyboard is currently visible
