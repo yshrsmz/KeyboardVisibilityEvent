@@ -2,10 +2,10 @@ package net.yslibrary.android.keyboardvisibilityevent;
 
 import android.app.Activity;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 /**
@@ -22,7 +22,7 @@ public class KeyboardVisibilityEvent {
      * @param listener KeyboardVisibilityEventListener
      */
     public static void setEventListener(final Activity activity,
-                                        final KeyboardVisibilityEventListener listener) {
+            final KeyboardVisibilityEventListener listener) {
 
         if (activity == null) {
             throw new NullPointerException("Parameter:activity must not be null");
@@ -34,7 +34,7 @@ public class KeyboardVisibilityEvent {
 
         final View activityRoot = getActivityRoot(activity);
 
-        activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(
+        final ViewTreeObserver.OnGlobalLayoutListener layoutListener =
                 new ViewTreeObserver.OnGlobalLayoutListener() {
 
                     private final Rect r = new Rect();
@@ -61,6 +61,20 @@ public class KeyboardVisibilityEvent {
 
                         listener.onVisibilityChanged(isOpen);
                     }
+                };
+        activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
+        activity.getApplication()
+                .registerActivityLifecycleCallbacks(new AutoActivityLifecycleCallback(activity) {
+                    @Override
+                    protected void onTargetActivityDestroyed() {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            activityRoot.getViewTreeObserver()
+                                    .removeOnGlobalLayoutListener(layoutListener);
+                        } else {
+                            activityRoot.getViewTreeObserver()
+                                    .removeGlobalOnLayoutListener(layoutListener);
+                        }
+                    }
                 });
     }
 
@@ -74,8 +88,8 @@ public class KeyboardVisibilityEvent {
         Rect r = new Rect();
 
         View activityRoot = getActivityRoot(activity);
-        int visibleThreshold = Math
-                .round(UIUtil.convertDpToPx(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
+        int visibleThreshold =
+                Math.round(UIUtil.convertDpToPx(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
 
         activityRoot.getWindowVisibleDisplayFrame(r);
 
