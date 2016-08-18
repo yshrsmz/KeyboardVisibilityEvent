@@ -2,6 +2,7 @@ package net.yslibrary.android.keyboardvisibilityevent;
 
 import android.app.Activity;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -66,8 +67,13 @@ public class KeyboardVisibilityEvent {
                 .registerActivityLifecycleCallbacks(new AutoActivityLifecycleCallback(activity) {
                     @Override
                     protected void onTargetActivityDestroyed() {
-                        activityRoot.getViewTreeObserver()
-                                .removeOnGlobalLayoutListener(layoutListener);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            activityRoot.getViewTreeObserver()
+                                    .removeOnGlobalLayoutListener(layoutListener);
+                        } else {
+                            activityRoot.getViewTreeObserver()
+                                    .removeGlobalOnLayoutListener(layoutListener);
+                        }
                     }
                 });
     }
