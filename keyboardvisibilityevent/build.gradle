@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 24
@@ -7,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 24
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName rootProject.ext.metadata.version
     }
     buildTypes {
         release {
@@ -22,10 +23,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-// from https://github.com/chrisbanes/gradle-mvn-push
-apply from: 'gradle-mvn-push.gradle'
+publish {
+    artifactId = 'keyboardvisibilityevent'
+    desc = 'Android Library to handle soft keyboard visibility change event'
 
-afterEvaluate {
-    androidJavadocs.classpath +=
-            project.android.libraryVariants.toList().first().javaCompile.classpath
+    def metadata = project.rootProject.ext.metadata
+    groupId = metadata.groupId
+    publishVersion = metadata.version
+    website = metadata.website
+    repository = metadata.repository
+    licences = metadata.licences
 }
