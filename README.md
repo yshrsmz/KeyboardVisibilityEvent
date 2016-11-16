@@ -21,13 +21,9 @@ _Please note that as described in this [issue](https://github.com/yshrsmz/Keyboa
 
 ## Installation
 
-AAR is distributed on the Maven Central repository.
+from 2.0.0, AAR is distributed via jCenter.
 
 ```groovy
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.0.0'
 }
