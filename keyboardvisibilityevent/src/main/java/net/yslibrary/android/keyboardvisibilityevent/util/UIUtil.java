@@ -80,7 +80,7 @@ public final class UIUtil {
      * @param activity Activity
      */
     public static void hideKeyboard(Activity activity) {
-        View view = activity.getCurrentFocus();
+        View view = activity.getWindow().getDecorView();
 
         if (view != null) {
             hideKeyboard(activity, view);
