@@ -41,18 +41,20 @@ String shell(String command) {
     return proc.in.text;
 }
 
-task releng << {
-    def tag = "v" + versionName()
-    println "Release engineering for ${tag}"
+task releng {
+    doLast {
+        def tag = "v" + versionName()
+        println "Release engineering for ${tag}"
 
-    def changes = shell "git status -s"
-    if (changes.trim()) {
-        throw new RuntimeException("There are changes not commited yet.\n${changes}")
+        def changes = shell "git status -s"
+        if (changes.trim()) {
+            throw new RuntimeException("There are changes not commited yet.\n${changes}")
+        }
+
+        println "> git tag ${tag}"
+        shell "git tag ${tag}"
+        println "> git push origin ${tag}"
+        shell "git push origin ${tag}"
+        shell "git push origin master"
     }
-
-    println "> git tag ${tag}"
-    shell "git tag ${tag}"
-    println "> git push origin ${tag}"
-    shell "git push origin ${tag}"
-    shell "git push origin master"
 }
