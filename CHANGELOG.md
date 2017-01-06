@@ -1,6 +1,11 @@
 Change Log
 ===
 
+Version 2.0.1 *(2017-01-06)*
+----------------------------
+
+- Fix keyboard not properly detected in some situation([#7](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/7) and[#8](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/8)). Thanks to [@UsherBaby](https://github.com/UsherBaby) for tha fix!
+
 Version 2.0.0 *(2016-08-20)*
 ----------------------------
 
