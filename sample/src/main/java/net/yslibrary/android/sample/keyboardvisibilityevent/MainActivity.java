@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import net.yslibrary.android.keyboardvisibilityevent.Deregister;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mTextField;
 
+    Deregister mDeregister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mKeyboardStatus = (TextView) findViewById(R.id.keyboard_status);
         mTextField = (EditText) findViewById(R.id.text_field);
 
-        KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
+        mDeregister = KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean isOpen) {
                 updateKeyboardStatusText(isOpen);
@@ -32,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this));
+
+        findViewById(R.id.deregister).setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                deRegister();
+            }
+        });
     }
 
     private void updateKeyboardStatusText(boolean isOpen) {
@@ -58,5 +68,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void deRegister(){
+        mDeregister.deRegister();
+    }
+
+    @Override protected void onDestroy() {
+        super.onDestroy();
+
+        mDeregister.deRegister();
     }
 }
