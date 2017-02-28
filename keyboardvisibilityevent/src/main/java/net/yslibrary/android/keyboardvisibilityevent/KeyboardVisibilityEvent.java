@@ -21,7 +21,7 @@ public class KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
-    public static void setEventListener(final Activity activity,
+    public static Deregister setEventListener(final Activity activity,
             final KeyboardVisibilityEventListener listener) {
 
         if (activity == null) {
@@ -63,19 +63,11 @@ public class KeyboardVisibilityEvent {
                     }
                 };
         activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
-        activity.getApplication()
-                .registerActivityLifecycleCallbacks(new AutoActivityLifecycleCallback(activity) {
-                    @Override
-                    protected void onTargetActivityDestroyed() {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            activityRoot.getViewTreeObserver()
-                                    .removeOnGlobalLayoutListener(layoutListener);
-                        } else {
-                            activityRoot.getViewTreeObserver()
-                                    .removeGlobalOnLayoutListener(layoutListener);
-                        }
-                    }
-                });
+
+        Deregister deregister = new SimpleDeRegister(activity, layoutListener);
+
+        return deregister;
+
     }
 
     /**
@@ -98,7 +90,7 @@ public class KeyboardVisibilityEvent {
         return heightDiff > visibleThreshold;
     }
 
-    private static View getActivityRoot(Activity activity) {
+    static View getActivityRoot(Activity activity) {
         return ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
     }
 }
