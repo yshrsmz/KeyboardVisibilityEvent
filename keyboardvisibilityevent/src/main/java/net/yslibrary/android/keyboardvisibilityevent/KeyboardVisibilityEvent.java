@@ -15,6 +15,10 @@ public class KeyboardVisibilityEvent {
 
     private final static int KEYBOARD_VISIBLE_THRESHOLD_DP = 100;
 
+    private static Activity sActivity;
+
+    private static ViewTreeObserver.OnGlobalLayoutListener sLayoutListener;
+
     /**
      * Set keyboard visibility change event listener.
      *
@@ -32,9 +36,11 @@ public class KeyboardVisibilityEvent {
             throw new NullPointerException("Parameter:listener must not be null");
         }
 
+        sActivity = activity;
+
         final View activityRoot = getActivityRoot(activity);
 
-        final ViewTreeObserver.OnGlobalLayoutListener layoutListener =
+        sLayoutListener =
                 new ViewTreeObserver.OnGlobalLayoutListener() {
 
                     private final Rect r = new Rect();
@@ -62,18 +68,12 @@ public class KeyboardVisibilityEvent {
                         listener.onVisibilityChanged(isOpen);
                     }
                 };
-        activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
+        activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(sLayoutListener);
         activity.getApplication()
                 .registerActivityLifecycleCallbacks(new AutoActivityLifecycleCallback(activity) {
                     @Override
                     protected void onTargetActivityDestroyed() {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            activityRoot.getViewTreeObserver()
-                                    .removeOnGlobalLayoutListener(layoutListener);
-                        } else {
-                            activityRoot.getViewTreeObserver()
-                                    .removeGlobalOnLayoutListener(layoutListener);
-                        }
+                        deRegister();
                     }
                 });
     }
@@ -98,7 +98,34 @@ public class KeyboardVisibilityEvent {
         return heightDiff > visibleThreshold;
     }
 
+    /**
+     * Deregister the listener forcefully
+     */
+    public static void deRegisterListener(){
+      deRegister();
+    }
+
     private static View getActivityRoot(Activity activity) {
         return ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
+    }
+
+    static void deRegister(){
+
+      if(null == sLayoutListener || null == sActivity){
+        return;
+      }
+
+      final View activityRoot = getActivityRoot(sActivity);
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        activityRoot.getViewTreeObserver()
+            .removeOnGlobalLayoutListener(sLayoutListener);
+      } else {
+        activityRoot.getViewTreeObserver()
+            .removeGlobalOnLayoutListener(sLayoutListener);
+      }
+
+      sActivity = null;
+      sLayoutListener = null;
     }
 }
