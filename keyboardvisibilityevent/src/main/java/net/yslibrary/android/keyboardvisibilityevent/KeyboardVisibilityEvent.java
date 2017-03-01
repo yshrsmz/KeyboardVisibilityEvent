@@ -2,7 +2,6 @@ package net.yslibrary.android.keyboardvisibilityevent;
 
 import android.app.Activity;
 import android.graphics.Rect;
-import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -21,7 +20,7 @@ public class KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
-    public static Deregister setEventListener(final Activity activity,
+    public static Unregister registerEventListener(final Activity activity,
             final KeyboardVisibilityEventListener listener) {
 
         if (activity == null) {
@@ -64,9 +63,9 @@ public class KeyboardVisibilityEvent {
                 };
         activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
 
-        Deregister deregister = new SimpleDeRegister(activity, layoutListener);
+        Unregister unregister = new SimpleDeRegister(activity, layoutListener);
 
-        return deregister;
+        return unregister;
 
     }
 

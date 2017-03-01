@@ -8,11 +8,12 @@ import android.view.ViewTreeObserver;
  *         on 28/02/2017
  */
 
-public interface Deregister {
+public interface Unregister {
 
   /**
    * deregisters the {@link ViewTreeObserver.OnGlobalLayoutListener} and there by does provide any more callback to the {@link KeyboardVisibilityEventListener}
    */
-  void deRegister();
+  void unregister();
 
 }
+

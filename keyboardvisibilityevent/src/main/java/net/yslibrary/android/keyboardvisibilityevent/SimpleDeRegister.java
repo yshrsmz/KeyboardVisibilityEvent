@@ -8,22 +8,22 @@ import java.lang.ref.WeakReference;
 
 /**
  * @author Anoop S S
- *         anoopss@cyware.com
+ *         anoopvvs@gmail.com
  *         on 28/02/2017
  */
 
-public class SimpleDeRegister implements Deregister {
+public class SimpleDeRegister implements Unregister {
 
   private WeakReference<Activity> mActivityWeakReference;
 
   private WeakReference<ViewTreeObserver.OnGlobalLayoutListener> mOnGlobalLayoutListenerWeakReference;
 
   public SimpleDeRegister(Activity activity, ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener){
-    this.mActivityWeakReference = new WeakReference<Activity>(activity);
-    this.mOnGlobalLayoutListenerWeakReference = new WeakReference<ViewTreeObserver.OnGlobalLayoutListener>(globalLayoutListener);
+    mActivityWeakReference = new WeakReference<>(activity);
+    mOnGlobalLayoutListenerWeakReference = new WeakReference<>(globalLayoutListener);
   }
 
-  @Override public void deRegister() {
+  @Override public void unregister() {
     Activity activity = mActivityWeakReference.get();
     ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener = mOnGlobalLayoutListenerWeakReference.get();
 
