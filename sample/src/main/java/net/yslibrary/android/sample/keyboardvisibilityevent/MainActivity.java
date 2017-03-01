@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import net.yslibrary.android.keyboardvisibilityevent.Deregister;
+import net.yslibrary.android.keyboardvisibilityevent.Unregister;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mTextField;
 
-    Deregister mDeregister;
+    Unregister mUnregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mKeyboardStatus = (TextView) findViewById(R.id.keyboard_status);
         mTextField = (EditText) findViewById(R.id.text_field);
 
-        mDeregister = KeyboardVisibilityEvent.setEventListener(this, new KeyboardVisibilityEventListener() {
+        mUnregister = KeyboardVisibilityEvent.registerEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean isOpen) {
                 updateKeyboardStatusText(isOpen);
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void deRegister(){
-        mDeregister.deRegister();
+        mUnregister.unregister();
     }
 
     @Override protected void onDestroy() {
         super.onDestroy();
 
-        mDeregister.deRegister();
+        mUnregister.unregister();
     }
 }
