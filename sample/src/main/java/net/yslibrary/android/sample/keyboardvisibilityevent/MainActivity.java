@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import net.yslibrary.android.keyboardvisibilityevent.Unregister;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import net.yslibrary.android.keyboardvisibilityevent.Unregistrar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mTextField;
 
-    Unregister mUnregister;
+    Button mButtonUnregister;
+
+    Unregistrar mUnregistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
         mKeyboardStatus = (TextView) findViewById(R.id.keyboard_status);
         mTextField = (EditText) findViewById(R.id.text_field);
+        mButtonUnregister = (Button) findViewById(R.id.btn_unregister);
 
-        mUnregister = KeyboardVisibilityEvent.registerEventListener(this, new KeyboardVisibilityEventListener() {
+        mUnregistrar = KeyboardVisibilityEvent.registerEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean isOpen) {
                 updateKeyboardStatusText(isOpen);
@@ -37,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this));
 
-        findViewById(R.id.deregister).setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                deRegister();
+        mButtonUnregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                unregister();
             }
         });
     }
@@ -70,13 +75,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void deRegister(){
-        mUnregister.unregister();
+    void unregister() {
+        mUnregistrar.unregister();
     }
 
-    @Override protected void onDestroy() {
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
 
-        mUnregister.unregister();
+        mUnregistrar.unregister();
     }
 }

@@ -5,6 +5,7 @@ import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 /**
@@ -20,8 +21,8 @@ public class KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
-    public static Unregister registerEventListener(final Activity activity,
-            final KeyboardVisibilityEventListener listener) {
+    public static Unregistrar registerEventListener(final Activity activity,
+                                                    final KeyboardVisibilityEventListener listener) {
 
         if (activity == null) {
             throw new NullPointerException("Parameter:activity must not be null");
@@ -63,9 +64,9 @@ public class KeyboardVisibilityEvent {
                 };
         activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
 
-        Unregister unregister = new SimpleDeRegister(activity, layoutListener);
+        Unregistrar unregistrar = new SimpleUnregistrar(activity, layoutListener);
 
-        return unregister;
+        return unregistrar;
 
     }
 

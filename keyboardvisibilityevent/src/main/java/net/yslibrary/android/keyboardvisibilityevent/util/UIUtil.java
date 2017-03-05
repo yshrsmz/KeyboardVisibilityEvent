@@ -13,9 +13,9 @@ import android.widget.EditText;
  * Created by yshrsmz on 15/03/17.
  */
 public final class UIUtil {
-    
+
     /**
-     * Supresses instantiation 
+     * Supresses instantiation
      */
     private UIUtil() {
         throw new AssertionError();
