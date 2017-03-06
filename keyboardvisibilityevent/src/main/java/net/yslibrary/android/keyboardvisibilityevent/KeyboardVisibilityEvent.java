@@ -17,6 +17,26 @@ public class KeyboardVisibilityEvent {
 
     /**
      * Set keyboard visibility change event listener.
+     * This automatically remove registered event listener when the Activity is destroyed
+     *
+     * @param activity Activity
+     * @param listener KeyboardVisibilityEventListener
+     */
+    public static void setEventListener(final Activity activity,
+                                        final KeyboardVisibilityEventListener listener) {
+
+        final Unregistrar unregistrar = registerEventListener(activity, listener);
+        activity.getApplication()
+                .registerActivityLifecycleCallbacks(new AutoActivityLifecycleCallback(activity) {
+                    @Override
+                    protected void onTargetActivityDestroyed() {
+                        unregistrar.unregister();
+                    }
+                });
+    }
+
+    /**
+     * Set keyboard visibility change event listener.
      *
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
@@ -64,10 +84,7 @@ public class KeyboardVisibilityEvent {
                 };
         activityRoot.getViewTreeObserver().addOnGlobalLayoutListener(layoutListener);
 
-        Unregistrar unregistrar = new SimpleUnregistrar(activity, layoutListener);
-
-        return unregistrar;
-
+        return new SimpleUnregistrar(activity, layoutListener);
     }
 
     /**

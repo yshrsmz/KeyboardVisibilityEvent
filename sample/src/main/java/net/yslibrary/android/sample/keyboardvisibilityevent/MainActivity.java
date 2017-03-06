@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         mTextField = (EditText) findViewById(R.id.text_field);
         mButtonUnregister = (Button) findViewById(R.id.btn_unregister);
 
+        /*
+          You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
+          if you don't want to unregister the event manually.
+         */
         mUnregistrar = KeyboardVisibilityEvent.registerEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean isOpen) {
