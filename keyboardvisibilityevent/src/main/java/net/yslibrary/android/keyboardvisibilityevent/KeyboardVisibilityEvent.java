@@ -40,6 +40,7 @@ public class KeyboardVisibilityEvent {
      *
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
+     * @return Unregistrar
      */
     public static Unregistrar registerEventListener(final Activity activity,
                                                     final KeyboardVisibilityEventListener listener) {
