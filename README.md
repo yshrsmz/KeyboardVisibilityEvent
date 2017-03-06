@@ -25,7 +25,7 @@ from 2.0.0, AAR is distributed via jCenter.
 
 ```groovy
 dependencies {
-    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.0.1'
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
 }
 ```
 

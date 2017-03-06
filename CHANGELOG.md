@@ -1,7 +1,7 @@
 Change Log
 ===
 
-Version 2.1.0 *(2017-03-XX)*
+Version 2.1.0 *(2017-03-06)*
 ----------------------------
 
 - Add `Unregistrar registerEventListener(Activity, KeyboardVisibilityEventListener)` to manually unregister event.
