@@ -35,6 +35,7 @@ check out sample project!
 
 ### Add event listener for keyboard change event
 
+#### Automatically unregistering the event on the Activity's onDestroy
 ```java
 KeyboardVisibilityEvent.setEventListener(
         getActivity(),
@@ -44,6 +45,22 @@ KeyboardVisibilityEvent.setEventListener(
                 // some code depending on keyboard visiblity status
             }
         });
+```
+
+#### Manually unregistering the event
+```java
+// get Unregistrar
+Unregistrar unregistrar = KeyboardVisibilityEvent.registerEventListener(
+        getActivity(),
+        new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                // some code depending on keyboard visiblity status
+            }
+        });
+
+// call this method when you don't need the event listener anymore
+unregistrar.unregister();
 ```
 
 ## License
