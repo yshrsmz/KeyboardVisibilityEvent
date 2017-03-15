@@ -4,13 +4,13 @@ Change Log
 Version 2.1.0 *(2017-03-06)*
 ----------------------------
 
-- Add `Unregistrar registerEventListener(Activity, KeyboardVisibilityEventListener)` to manually unregister event.
+- Add `Unregistrar registerEventListener(Activity, KeyboardVisibilityEventListener)` to manually unregister event([#18](https://github.com/yshrsmz/KeyboardVisibilityEvent/pull/18)). Thanks to [@anoop44](https://github.com/anoop44) for the awesome PR!
 
 
 Version 2.0.1 *(2017-01-06)*
 ----------------------------
 
-- Fix keyboard not properly detected in some situation([#7](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/7) and[#8](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/8)). Thanks to [@UsherBaby](https://github.com/UsherBaby) for the fix!
+- Fix keyboard not properly detected in some situation([#7](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/7) and [#8](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/8)). Thanks to [@UsherBaby](https://github.com/UsherBaby) for the fix!
 
 Version 2.0.0 *(2016-08-20)*
 ----------------------------
