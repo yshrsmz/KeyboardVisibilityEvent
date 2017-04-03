@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import android.view.WindowManager;
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
 /**
@@ -47,6 +48,12 @@ public class KeyboardVisibilityEvent {
 
         if (activity == null) {
             throw new NullPointerException("Parameter:activity must not be null");
+        }
+
+        int softInputMethod = activity.getWindow().getAttributes().softInputMode;
+        if(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE != softInputMethod &&
+            WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED != softInputMethod){
+            throw new IllegalArgumentException("Parameter:activity window SoftInputMethod is not ADJUST_RESIZE");
         }
 
         if (listener == null) {
