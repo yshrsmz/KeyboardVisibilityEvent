@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -23,14 +23,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-publish {
-    artifactId = 'keyboardvisibilityevent'
-    desc = 'Android Library to handle soft keyboard visibility change event'
-
-    def metadata = project.rootProject.ext.metadata
-    groupId = metadata.groupId
-    publishVersion = metadata.version
-    website = metadata.website
-    repository = metadata.repository
-    licences = metadata.licences
-}
+//publish {
+//    artifactId = 'keyboardvisibilityevent'
+//    desc = 'Android Library to handle soft keyboard visibility change event'
+//
+//    def metadata = project.rootProject.ext.metadata
+//    groupId = metadata.groupId
+//    publishVersion = metadata.version
+//    website = metadata.website
+//    repository = metadata.repository
+//    licences = metadata.licences
+//}
