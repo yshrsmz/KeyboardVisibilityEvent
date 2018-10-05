@@ -2,12 +2,11 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 6
         versionName rootProject.ext.metadata.version
     }
@@ -19,9 +18,7 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-}
+dependencies {}
 
 //publish {
 //    artifactId = 'keyboardvisibilityevent'
