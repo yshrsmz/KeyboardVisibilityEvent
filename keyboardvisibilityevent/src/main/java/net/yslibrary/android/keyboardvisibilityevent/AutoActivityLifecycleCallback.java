@@ -11,7 +11,7 @@ import android.os.Bundle;
 public abstract class AutoActivityLifecycleCallback implements Application.ActivityLifecycleCallbacks {
     private final Activity mTargetActivity;
 
-    public AutoActivityLifecycleCallback(Activity targetActivity) {
+    AutoActivityLifecycleCallback(Activity targetActivity) {
         mTargetActivity = targetActivity;
     }
 

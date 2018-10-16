@@ -19,7 +19,7 @@ public class SimpleUnregistrar implements Unregistrar {
 
     private WeakReference<ViewTreeObserver.OnGlobalLayoutListener> mOnGlobalLayoutListenerWeakReference;
 
-    public SimpleUnregistrar(Activity activity, ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener) {
+    SimpleUnregistrar(Activity activity, ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener) {
         mActivityWeakReference = new WeakReference<>(activity);
         mOnGlobalLayoutListenerWeakReference = new WeakReference<>(globalLayoutListener);
     }

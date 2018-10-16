@@ -15,7 +15,7 @@ import android.widget.EditText;
 public final class UIUtil {
 
     /**
-     * Supresses instantiation
+     * Suppresses instantiation
      */
     private UIUtil() {
         throw new AssertionError();

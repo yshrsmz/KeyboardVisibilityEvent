@@ -1,7 +1,6 @@
 package net.yslibrary.android.sample.keyboardvisibilityevent;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 import net.yslibrary.android.keyboardvisibilityevent.Unregistrar;
@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mKeyboardStatus = (TextView) findViewById(R.id.keyboard_status);
-        mTextField = (EditText) findViewById(R.id.text_field);
-        mButtonUnregister = (Button) findViewById(R.id.btn_unregister);
+        mKeyboardStatus = findViewById(R.id.keyboard_status);
+        mTextField = findViewById(R.id.text_field);
+        mButtonUnregister = findViewById(R.id.btn_unregister);
 
         /*
           You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
