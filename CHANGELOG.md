@@ -5,6 +5,7 @@ Version 2.2.0 *(2018-10-XX)*
 ----------------------------
 
 - Update targetSdkVersion to 28
+- Use ratio rather than constant value to detect keyboard visibility change [#25](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/25)
 
 
 Version 2.1.0 *(2017-03-06)*
