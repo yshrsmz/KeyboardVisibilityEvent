@@ -3,6 +3,7 @@ KeyboardVisibilityEvent
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-KeyboardVisibilityEvent-green.svg?style=flat)](https://android-arsenal.com/details/1/2519)
 [![Android Gems](http://www.android-gems.com/badge/yshrsmz/KeyboardVisibilityEvent.svg?branch=master)](http://www.android-gems.com/lib/yshrsmz/KeyboardVisibilityEvent)
+[![Download](https://api.bintray.com/packages/yshrsmz/maven/keyboardvisibilityevent/images/download.svg) ](https://bintray.com/yshrsmz/maven/keyboardvisibilityevent/_latestVersion)
 
 Android Library to handle soft keyboard visibility change event.
 show/hide keyboard method is also included.
@@ -21,11 +22,11 @@ _Please note that as described in this [issue](https://github.com/yshrsmz/Keyboa
 
 ## Installation
 
-from 2.0.0, AAR is distributed via jCenter.
+from 2.0.0, AAR is distributed via jCenter. The latest version is [![Download](https://api.bintray.com/packages/yshrsmz/maven/keyboardvisibilityevent/images/download.svg) ](https://bintray.com/yshrsmz/maven/keyboardvisibilityevent/_latestVersion)
 
 ```groovy
 dependencies {
-    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
+    compile 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:LATEST_VERSION'
 }
 ```
 
