@@ -1,7 +1,7 @@
 Change Log
 ===
 
-Version 2.2.0 *(2018-10-XX)*
+Version 2.2.0 *(2018-12-11)*
 ----------------------------
 
 - Update targetSdkVersion to 28
