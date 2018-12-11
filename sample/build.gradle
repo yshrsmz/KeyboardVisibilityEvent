@@ -20,5 +20,6 @@ android {
 
 dependencies {
     implementation project(':keyboardvisibilityevent')
+//    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.2.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
 }
