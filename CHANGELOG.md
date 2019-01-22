@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.2.1 *(2019-01-21)*
+Version 2.2.1 *(2019-01-22)*
 ----------------------------
 
 - Added logic to handle softInputMode with keyboard state flags. (windowSoftInputMode="adjustResize|stateHidden" or similar values will not crash anymore and keyboard visibility changes will be detected properly)
