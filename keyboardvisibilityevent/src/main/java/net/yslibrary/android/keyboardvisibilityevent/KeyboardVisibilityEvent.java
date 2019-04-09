@@ -15,7 +15,6 @@ import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
  */
 public class KeyboardVisibilityEvent {
 
-    private final static int KEYBOARD_VISIBLE_THRESHOLD_DP = 100;
     private final static double KEYBOARD_MIN_HEIGHT_RATIO = 0.15;
 
     /**
@@ -109,14 +108,13 @@ public class KeyboardVisibilityEvent {
         Rect r = new Rect();
 
         View activityRoot = getActivityRoot(activity);
-        int visibleThreshold =
-                Math.round(UIUtil.convertDpToPx(activity, KEYBOARD_VISIBLE_THRESHOLD_DP));
 
         activityRoot.getWindowVisibleDisplayFrame(r);
 
-        int heightDiff = activityRoot.getRootView().getHeight() - r.height();
+        int screenHeight = activityRoot.getRootView().getHeight();
+        int heightDiff = screenHeight - r.height();
 
-        return heightDiff > visibleThreshold;
+        return heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO;
     }
 
     static View getActivityRoot(Activity activity) {

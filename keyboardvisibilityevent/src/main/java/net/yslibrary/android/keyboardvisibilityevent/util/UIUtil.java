@@ -21,12 +21,6 @@ public final class UIUtil {
         throw new AssertionError();
     }
 
-    public static float convertDpToPx(Context context, float dp) {
-        Resources res = context.getResources();
-
-        return dp * (res.getDisplayMetrics().densityDpi / 160f);
-    }
-
     /**
      * Show keyboard and focus to given EditText
      *
