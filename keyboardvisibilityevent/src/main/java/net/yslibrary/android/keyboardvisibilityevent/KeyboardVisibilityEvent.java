@@ -52,11 +52,14 @@ public class KeyboardVisibilityEvent {
             throw new NullPointerException("Parameter:activity must not be null");
         }
 
-        int softInputMethod = activity.getWindow().getAttributes().softInputMode;
-        if (WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED != softInputMethod &&
-                (WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE > softInputMethod ||
-                        WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN <= softInputMethod)) {
-            throw new IllegalArgumentException("Parameter:activity window SoftInputMethod is not ADJUST_RESIZE");
+        int softInputAdjust = activity.getWindow().getAttributes().softInputMode
+                & WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST;
+
+        // fix for #37 and #38.
+        // The window will not be resized in case of SOFT_INPUT_ADJUST_NOTHING
+        if ((softInputAdjust & WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+                == WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING) {
+            throw new IllegalArgumentException("Parameter:activity window SoftInputMethod is SOFT_INPUT_ADJUST_NOTHING. In this case window will not be resized");
         }
 
         if (listener == null) {
