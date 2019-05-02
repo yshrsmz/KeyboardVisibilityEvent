@@ -22,7 +22,7 @@ Version 2.2.0 *(2018-12-11)*
 Version 2.1.0 *(2017-03-06)*
 ----------------------------
 
-- Add `Unregistrar registerEventListener(Activity, KeyboardVisibilityEventListener)` to manually unregister event([#18](https://github.com/yshrsmz/KeyboardVisibilityEvent/pull/18)). Thanks to [@anoop44](https://github.com/anoop44) for the awesome PR!
+- Add `Unregister registerEventListener(Activity, KeyboardVisibilityEventListener)` to manually unregister event([#18](https://github.com/yshrsmz/KeyboardVisibilityEvent/pull/18)). Thanks to [@anoop44](https://github.com/anoop44) for the awesome PR!
 
 
 Version 2.0.1 *(2017-01-06)*
