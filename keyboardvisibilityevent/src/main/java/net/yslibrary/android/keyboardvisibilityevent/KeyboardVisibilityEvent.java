@@ -2,11 +2,7 @@ package net.yslibrary.android.keyboardvisibilityevent;
 
 import android.app.Activity;
 import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-
-import android.view.WindowManager;
+import android.view.*;
 
 import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil;
 
@@ -109,10 +105,17 @@ public class KeyboardVisibilityEvent {
 
         View activityRoot = getActivityRoot(activity);
 
+
         activityRoot.getWindowVisibleDisplayFrame(r);
 
+        int statusBarHeight  = 0;
+        int resourceId = activityRoot.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            statusBarHeight  = activityRoot.getResources().getDimensionPixelSize(resourceId);
+        }
+
         int screenHeight = activityRoot.getRootView().getHeight();
-        int heightDiff = screenHeight - r.height();
+        int heightDiff = screenHeight - statusBarHeight  - r.height();
 
         return heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO;
     }
