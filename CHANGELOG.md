@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 2.3.1 *(2019-07-12)*
+----------------------------
+
+- Added logic to handle status bar height to fix [#41](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/41)
+
+
 Version 2.3.0 *(2019-04-09)*
 ----------------------------
 
