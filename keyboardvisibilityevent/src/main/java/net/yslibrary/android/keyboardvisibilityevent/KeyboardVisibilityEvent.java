@@ -75,7 +75,14 @@ public class KeyboardVisibilityEvent {
                         activityRoot.getWindowVisibleDisplayFrame(r);
 
                         int screenHeight = activityRoot.getRootView().getHeight();
-                        int heightDiff = screenHeight - r.height();
+
+                        int statusBarHeight  = 0;
+                        int resourceId = activityRoot.getResources().getIdentifier("status_bar_height", "dimen", "android");
+                        if (resourceId > 0) {
+                            statusBarHeight  = activityRoot.getResources().getDimensionPixelSize(resourceId);
+                        }
+
+                        int heightDiff = screenHeight - statusBarHeight  - r.height();
 
                         boolean isOpen = heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO;
 
