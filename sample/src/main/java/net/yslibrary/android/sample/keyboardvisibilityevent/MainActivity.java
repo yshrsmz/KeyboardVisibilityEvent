@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
           You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
           if you don't want to unregister the event manually.
          */
-        mUnregistrar = KeyboardVisibilityEvent.registerEventListener(this, new KeyboardVisibilityEventListener() {
+        mUnregistrar = KeyboardVisibilityEvent.INSTANCE.registerEventListener(this, new KeyboardVisibilityEventListener() {
             @Override
             public void onVisibilityChanged(boolean isOpen) {
                 updateKeyboardStatusText(isOpen);
             }
         });
 
-        updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this));
+        updateKeyboardStatusText(KeyboardVisibilityEvent.INSTANCE.isKeyboardVisible(this));
 
         mButtonUnregister.setOnClickListener(new View.OnClickListener() {
             @Override
