@@ -15,13 +15,13 @@ import net.yslibrary.android.keyboardvisibilityevent.Unregistrar
 
 class MainActivity : AppCompatActivity() {
 
-    internal var mKeyboardStatus: TextView
+    private lateinit var mKeyboardStatus: TextView
 
-    internal var mTextField: EditText
+    private lateinit var mTextField: EditText
 
-    internal var mButtonUnregister: Button
+    private lateinit var mButtonUnregister: Button
 
-    internal var mUnregistrar: Unregistrar
+    private lateinit var mUnregistrar: Unregistrar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateKeyboardStatusText(isOpen: Boolean) {
-        mKeyboardStatus.text = String.format("keyboard is %s", if (isOpen) "visible" else "hidden")
+        mKeyboardStatus.text = "keyboard is ${if (isOpen) "visible" else "hidden"}"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    internal fun unregister() {
+    private fun unregister() {
         mUnregistrar.unregister()
     }
 
