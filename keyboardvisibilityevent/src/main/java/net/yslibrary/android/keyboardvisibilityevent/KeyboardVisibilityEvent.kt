@@ -24,6 +24,7 @@ object  KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
+    @JvmStatic
     fun setEventListener(activity: Activity,
                          listener: KeyboardVisibilityEventListener) {
 
