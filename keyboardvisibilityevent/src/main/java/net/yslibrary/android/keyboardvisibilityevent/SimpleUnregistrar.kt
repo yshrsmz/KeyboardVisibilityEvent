@@ -2,7 +2,6 @@ package net.yslibrary.android.keyboardvisibilityevent
 
 import android.app.Activity
 import android.os.Build
-import android.view.View
 import android.view.ViewTreeObserver
 
 import java.lang.ref.WeakReference
@@ -15,13 +14,13 @@ import java.lang.ref.WeakReference
 
 class SimpleUnregistrar internal constructor(activity: Activity, globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener) : Unregistrar {
 
-    private val mActivityWeakReference: WeakReference<Activity> = WeakReference(activity)
+    private val activityWeakReference: WeakReference<Activity> = WeakReference(activity)
 
-    private val mOnGlobalLayoutListenerWeakReference: WeakReference<ViewTreeObserver.OnGlobalLayoutListener> = WeakReference(globalLayoutListener)
+    private val onGlobalLayoutListenerWeakReference: WeakReference<ViewTreeObserver.OnGlobalLayoutListener> = WeakReference(globalLayoutListener)
 
     override fun unregister() {
-        val activity = mActivityWeakReference.get()
-        val globalLayoutListener = mOnGlobalLayoutListenerWeakReference.get()
+        val activity = activityWeakReference.get()
+        val globalLayoutListener = onGlobalLayoutListenerWeakReference.get()
 
         if (null != activity && null != globalLayoutListener) {
             val activityRoot = KeyboardVisibilityEvent.getActivityRoot(activity)
@@ -34,8 +33,8 @@ class SimpleUnregistrar internal constructor(activity: Activity, globalLayoutLis
             }
         }
 
-        mActivityWeakReference.clear()
-        mOnGlobalLayoutListenerWeakReference.clear()
+        activityWeakReference.clear()
+        onGlobalLayoutListenerWeakReference.clear()
     }
 
 }

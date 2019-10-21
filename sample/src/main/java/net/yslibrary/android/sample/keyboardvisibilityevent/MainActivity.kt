@@ -3,7 +3,6 @@ package net.yslibrary.android.sample.keyboardvisibilityevent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,27 +14,27 @@ import net.yslibrary.android.keyboardvisibilityevent.Unregistrar
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mKeyboardStatus: TextView
+    private lateinit var keyboardStatus: TextView
 
-    private lateinit var mTextField: EditText
+    private lateinit var textField: EditText
 
-    private lateinit var mButtonUnregister: Button
+    private lateinit var buttonUnregister: Button
 
-    private lateinit var mUnregistrar: Unregistrar
+    private lateinit var unregistrar: Unregistrar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mKeyboardStatus = findViewById(R.id.keyboard_status)
-        mTextField = findViewById(R.id.text_field)
-        mButtonUnregister = findViewById(R.id.btn_unregister)
+        keyboardStatus = findViewById(R.id.keyboard_status)
+        textField = findViewById(R.id.text_field)
+        buttonUnregister = findViewById(R.id.btn_unregister)
 
         /*
           You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
           if you don't want to unregister the event manually.
          */
-        mUnregistrar = KeyboardVisibilityEvent.registerEventListener(this, object : KeyboardVisibilityEventListener {
+        unregistrar = KeyboardVisibilityEvent.registerEventListener(this, object : KeyboardVisibilityEventListener {
             override fun onVisibilityChanged(isOpen: Boolean) {
                 updateKeyboardStatusText(isOpen)
             }
@@ -43,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this))
 
-        mButtonUnregister.setOnClickListener { unregister() }
+        buttonUnregister.setOnClickListener { unregister() }
     }
 
     private fun updateKeyboardStatusText(isOpen: Boolean) {
-        mKeyboardStatus.text = "keyboard is ${if (isOpen) "visible" else "hidden"}"
+        keyboardStatus.text = "keyboard is ${if (isOpen) "visible" else "hidden"}"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,12 +69,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun unregister() {
-        mUnregistrar.unregister()
+        unregistrar.unregister()
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        mUnregistrar.unregister()
+        unregistrar.unregister()
     }
 }

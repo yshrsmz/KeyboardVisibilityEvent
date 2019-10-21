@@ -8,7 +8,7 @@ import android.os.Bundle
  * Created by Piasy{github.com/Piasy} on 8/18/16.
  */
 
-abstract class AutoActivityLifecycleCallback internal constructor(private val mTargetActivity: Activity) : Application.ActivityLifecycleCallbacks {
+abstract class AutoActivityLifecycleCallback internal constructor(private val targetActivity: Activity) : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, bundle: Bundle) {
 
@@ -35,8 +35,8 @@ abstract class AutoActivityLifecycleCallback internal constructor(private val mT
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        if (activity === mTargetActivity) {
-            mTargetActivity.application.unregisterActivityLifecycleCallbacks(this)
+        if (activity === targetActivity) {
+            targetActivity.application.unregisterActivityLifecycleCallbacks(this)
             onTargetActivityDestroyed()
         }
     }
