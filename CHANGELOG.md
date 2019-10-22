@@ -1,10 +1,19 @@
 Change Log
 ==========
 
+Version 3.0.0 *(2019-10-XX)*
+----------------------------
+
+- Library converted to Kotlin
+- Update targetSdkVersion to 29
+- Android Gradle Plugin 3.5.1
+
+
 Version 2.3.0 *(2019-04-09)*
 ----------------------------
 
 - Check `SOFT_INPUT_ADJUST_NOTHING` explicitly to fix [#37](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/37) and [#38](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/38). Thanks to [@alzhuravlev](https://github.com/alzhuravlev) for the fix!
+
 
 Version 2.2.1 *(2019-01-22)*
 ----------------------------
