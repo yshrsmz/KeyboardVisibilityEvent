@@ -21,6 +21,9 @@
         android:id="@+id/text_field"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor"
+        android:inputType="text"
         />
 
     <Button
@@ -30,6 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Unregister"
+        tools:ignore="HardcodedText"
         />
 
 </RelativeLayout>
