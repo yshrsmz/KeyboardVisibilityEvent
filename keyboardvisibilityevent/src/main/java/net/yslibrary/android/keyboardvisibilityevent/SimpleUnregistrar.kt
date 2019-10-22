@@ -12,11 +12,15 @@ import java.lang.ref.WeakReference
  * on 28/02/2017
  */
 
-class SimpleUnregistrar internal constructor(activity: Activity, globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener) : Unregistrar {
+class SimpleUnregistrar internal constructor(
+    activity: Activity,
+    globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener
+) : Unregistrar {
 
     private val activityWeakReference: WeakReference<Activity> = WeakReference(activity)
 
-    private val onGlobalLayoutListenerWeakReference: WeakReference<ViewTreeObserver.OnGlobalLayoutListener> = WeakReference(globalLayoutListener)
+    private val onGlobalLayoutListenerWeakReference: WeakReference<ViewTreeObserver.OnGlobalLayoutListener> =
+        WeakReference(globalLayoutListener)
 
     override fun unregister() {
         val activity = activityWeakReference.get()
@@ -26,10 +30,11 @@ class SimpleUnregistrar internal constructor(activity: Activity, globalLayoutLis
             val activityRoot = KeyboardVisibilityEvent.getActivityRoot(activity)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 activityRoot.viewTreeObserver
-                        .removeOnGlobalLayoutListener(globalLayoutListener)
+                    .removeOnGlobalLayoutListener(globalLayoutListener)
             } else {
+                @Suppress("DEPRECATION")
                 activityRoot.viewTreeObserver
-                        .removeGlobalOnLayoutListener(globalLayoutListener)
+                    .removeGlobalOnLayoutListener(globalLayoutListener)
             }
         }
 

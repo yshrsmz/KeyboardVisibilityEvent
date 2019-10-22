@@ -1,5 +1,6 @@
 package net.yslibrary.android.sample.keyboardvisibilityevent
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -34,17 +35,20 @@ class MainActivity : AppCompatActivity() {
           You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
           if you don't want to unregister the event manually.
          */
-        unregistrar = KeyboardVisibilityEvent.registerEventListener(this, object : KeyboardVisibilityEventListener {
-            override fun onVisibilityChanged(isOpen: Boolean) {
-                updateKeyboardStatusText(isOpen)
-            }
-        })
+        unregistrar = KeyboardVisibilityEvent.registerEventListener(
+            this,
+            object : KeyboardVisibilityEventListener {
+                override fun onVisibilityChanged(isOpen: Boolean) {
+                    updateKeyboardStatusText(isOpen)
+                }
+            })
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this))
 
         buttonUnregister.setOnClickListener { unregister() }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateKeyboardStatusText(isOpen: Boolean) {
         keyboardStatus.text = "keyboard is ${if (isOpen) "visible" else "hidden"}"
     }

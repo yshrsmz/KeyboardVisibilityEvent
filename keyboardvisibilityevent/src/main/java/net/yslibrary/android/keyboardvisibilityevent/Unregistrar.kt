@@ -14,6 +14,5 @@ interface Unregistrar {
      * unregisters the [ViewTreeObserver.OnGlobalLayoutListener] and there by does provide any more callback to the [KeyboardVisibilityEventListener]
      */
     fun unregister()
-
 }
 

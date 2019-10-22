@@ -5,17 +5,14 @@ import android.graphics.Rect
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-
 import android.view.WindowManager
-
-import net.yslibrary.android.keyboardvisibilityevent.util.UIUtil
 
 private const val KEYBOARD_MIN_HEIGHT_RATIO = 0.15
 
 /**
  * Created by yshrsmz on 15/03/17.
  */
-object  KeyboardVisibilityEvent {
+object KeyboardVisibilityEvent {
 
     /**
      * Set keyboard visibility change event listener.
@@ -25,16 +22,18 @@ object  KeyboardVisibilityEvent {
      * @param listener KeyboardVisibilityEventListener
      */
     @JvmStatic
-    fun setEventListener(activity: Activity,
-                         listener: KeyboardVisibilityEventListener) {
+    fun setEventListener(
+        activity: Activity,
+        listener: KeyboardVisibilityEventListener
+    ) {
 
         val unregistrar = registerEventListener(activity, listener)
         activity.application
-                .registerActivityLifecycleCallbacks(object : AutoActivityLifecycleCallback(activity) {
-                    override fun onTargetActivityDestroyed() {
-                        unregistrar.unregister()
-                    }
-                })
+            .registerActivityLifecycleCallbacks(object : AutoActivityLifecycleCallback(activity) {
+                override fun onTargetActivityDestroyed() {
+                    unregistrar.unregister()
+                }
+            })
     }
 
     /**
@@ -44,18 +43,22 @@ object  KeyboardVisibilityEvent {
      * @param listener KeyboardVisibilityEventListener
      * @return Unregistrar
      */
-    fun registerEventListener(activity: Activity?,
-                              listener: KeyboardVisibilityEventListener?): Unregistrar {
+    fun registerEventListener(
+        activity: Activity?,
+        listener: KeyboardVisibilityEventListener?
+    ): Unregistrar {
 
         if (activity == null) {
             throw NullPointerException("Parameter:activity must not be null")
         }
 
-        val softInputAdjust = activity.window.attributes.softInputMode and WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST
+        val softInputAdjust =
+            activity.window.attributes.softInputMode and WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST
 
         // fix for #37 and #38.
         // The window will not be resized in case of SOFT_INPUT_ADJUST_NOTHING
-        require(softInputAdjust and WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING != WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING) { "Parameter:activity window SoftInputMethod is SOFT_INPUT_ADJUST_NOTHING. In this case window will not be resized" }
+        val isNotAdjustNothing = softInputAdjust and WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING != WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
+        require(isNotAdjustNothing) { "Parameter:activity window SoftInputMethod is SOFT_INPUT_ADJUST_NOTHING. In this case window will not be resized" }
 
         if (listener == null) {
             throw NullPointerException("Parameter:listener must not be null")
@@ -111,7 +114,7 @@ object  KeyboardVisibilityEvent {
         return heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO
     }
 
-    fun getActivityRoot(activity: Activity): View {
+    internal fun getActivityRoot(activity: Activity): View {
         return (activity.findViewById<View>(android.R.id.content) as ViewGroup).getChildAt(0)
     }
 }

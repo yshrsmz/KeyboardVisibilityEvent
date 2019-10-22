@@ -3,7 +3,6 @@ package net.yslibrary.android.keyboardvisibilityevent.util
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.res.Resources
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
