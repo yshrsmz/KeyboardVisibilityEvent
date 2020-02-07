@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.WindowManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 
 private const val KEYBOARD_MIN_HEIGHT_RATIO = 0.15
 
@@ -13,6 +17,23 @@ private const val KEYBOARD_MIN_HEIGHT_RATIO = 0.15
  * Created by yshrsmz on 15/03/17.
  */
 object KeyboardVisibilityEvent {
+
+    @JvmStatic
+    fun setEventListener(
+        activity: Activity,
+        lifecycleOwner: LifecycleOwner,
+        listener: KeyboardVisibilityEventListener
+    ) {
+
+        val unregistrar = registerEventListener(activity, listener)
+        lifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
+                lifecycleOwner.lifecycle.removeObserver(this)
+                unregistrar.unregister()
+            }
+        })
+    }
 
     /**
      * Set keyboard visibility change event listener.
