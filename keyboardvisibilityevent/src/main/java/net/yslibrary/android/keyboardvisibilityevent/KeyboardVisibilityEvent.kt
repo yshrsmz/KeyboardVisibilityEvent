@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.WindowManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 
 private const val KEYBOARD_MIN_HEIGHT_RATIO = 0.15
 
@@ -13,6 +17,34 @@ private const val KEYBOARD_MIN_HEIGHT_RATIO = 0.15
  * Created by yshrsmz on 15/03/17.
  */
 object KeyboardVisibilityEvent {
+
+    /**
+     * Set keyboard visibility event listener.
+     * This automatically removes registered event listener when lifecycle owner is destroyed.
+     * This function is intended to be used by fragments so the listener is removed when fragment
+     * is no longer displayed. Prevents fragment leaks and crashes.
+     *
+     * @param activity Activity on which the keyboard changes are to be detected
+     * @param lifecycleOwner Owner of the lifecycle who's destruction causes the event to be
+     * automatically unregistered. Typically a fragment.
+     * @param listener Event listener
+     */
+    @JvmStatic
+    fun setEventListener(
+        activity: Activity,
+        lifecycleOwner: LifecycleOwner,
+        listener: KeyboardVisibilityEventListener
+    ) {
+
+        val unregistrar = registerEventListener(activity, listener)
+        lifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
+                lifecycleOwner.lifecycle.removeObserver(this)
+                unregistrar.unregister()
+            }
+        })
+    }
 
     /**
      * Set keyboard visibility change event listener.
