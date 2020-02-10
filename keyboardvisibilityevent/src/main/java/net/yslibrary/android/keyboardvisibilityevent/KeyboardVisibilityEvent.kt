@@ -76,7 +76,7 @@ object KeyboardVisibilityEvent {
                 activityRoot.getWindowVisibleDisplayFrame(r)
 
                 val screenHeight = activityRoot.rootView.height
-                val heightDiff = screenHeight - r.height()  - getContentRoot(activity).top
+                val heightDiff = screenHeight - r.height()
 
                 val isOpen = heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO
 
@@ -109,7 +109,7 @@ object KeyboardVisibilityEvent {
         activityRoot.getWindowVisibleDisplayFrame(r)
 
         val screenHeight = activityRoot.rootView.height
-        val heightDiff = screenHeight - r.height()
+        val heightDiff = screenHeight - r.height() - getContentRoot(activity).top
 
         return heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO
     }
