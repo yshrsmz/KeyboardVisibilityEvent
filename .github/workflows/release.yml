@@ -15,7 +15,7 @@ jobs:
 
       - name: Publish the artifact
         env:
-          BINTRAY_USER: ${{ secrets.BINTRAY_USERNAME }}
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
           BINTRAY_KEY: ${{ secrets.BINTRAY_API_KEY }}
         run: ./gradlew clean build generatePomFileForReleasePublication bintrayUpload --no-daemon
 
