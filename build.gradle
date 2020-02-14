@@ -1,10 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply plugin: 'com.github.ben-manes.versions'
 
-apply from: "${project.rootDir}/gradle/version/version.gradle"
 apply from: "${project.rootDir}/metadata.gradle"
 
 buildscript {
+    apply from: "${rootDir.absolutePath}/ext.gradle"
+
     repositories {
         google()
         jcenter()
@@ -29,7 +30,7 @@ allprojects {
 }
 
 ext {
-    metadata.version = ext.versionName()
+    metadata.version = VERSION_NAME
 }
 
 task clean(type: Delete) {
@@ -51,7 +52,7 @@ String shell(String command) {
 
 task releng {
     doLast {
-        def tag = "v" + versionName()
+        def tag = "v" + metadata.version
         println "Release engineering for ${tag}"
 
         def changes = shell "git status -s"

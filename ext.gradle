@@ -1,0 +1,5 @@
+ext {
+    bintrayUser = System.getenv("BINTRAY_USER")
+    bintrayKey = System.getenv("BINTRAY_API_KEY")
+    dryRun = (System.getenv("dryRun") == "true").toString()
+}
