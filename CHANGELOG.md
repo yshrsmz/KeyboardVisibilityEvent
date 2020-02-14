@@ -1,12 +1,14 @@
 Change Log
 ==========
 
-Version 3.0.0 *(2019-10-XX)*
+Version 3.0.0-RC1 *(2020-02-XX)*
 ----------------------------
 
-- Library converted to Kotlin
+- Library converted to Kotlin(v1.3.61)
 - Update targetSdkVersion to 29
-- Android Gradle Plugin 3.5.1
+- Android Gradle Plugin 3.5.3
+- Added support for Architecture Components Lifecycle [#48](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/48). Thanks @kletzander](https://github.com/kletzander)!
+- Exclude the height of status bar and ActionBar from the height diff calculation to fix [#41](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/41). Thanks [@anoop44](https://github.com/anoop44)!
 
 
 Version 2.3.0 *(2019-04-09)*
