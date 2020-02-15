@@ -48,6 +48,22 @@ KeyboardVisibilityEvent.setEventListener(
         });
 ```
 
+#### Automatically unregistering the event on the LifecycleOwner's `ON_DESTROY`
+
+This is convenient when you want to KeyboardVisibilityEvent from a Fragment.
+
+```java
+KeyboardVisibilityEvent.setEventListener(
+        getActivity(),
+        getLifecycleOwner(),
+        new KeyboardVisibilityEventListener() {
+            @Override
+            public void onVisibilityChanged(boolean isOpen) {
+                // some code depending on keyboard visiblity status
+            }
+        });
+```
+
 #### Manually unregistering the event
 ```java
 // get Unregistrar
