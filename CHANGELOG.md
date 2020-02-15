@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 3.0.0-RC1 *(2020-02-XX)*
+Version 3.0.0-RC1 *(2020-02-14)*
 ----------------------------
 
 - Library converted to Kotlin(v1.3.61)
