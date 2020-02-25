@@ -100,17 +100,11 @@ object KeyboardVisibilityEvent {
 
         val layoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
 
-            private val r = Rect()
-
             private var wasOpened = false
 
             override fun onGlobalLayout() {
-                activityRoot.getWindowVisibleDisplayFrame(r)
 
-                val screenHeight = activityRoot.rootView.height
-                val heightDiff = screenHeight - r.height()
-
-                val isOpen = heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO
+                val isOpen = isKeyboardVisible(activity)
 
                 if (isOpen == wasOpened) {
                     // keyboard state has not changed
@@ -140,8 +134,11 @@ object KeyboardVisibilityEvent {
 
         activityRoot.getWindowVisibleDisplayFrame(r)
 
+        val location = IntArray(2)
+        getContentRoot(activity).getLocationOnScreen(location)
+
         val screenHeight = activityRoot.rootView.height
-        val heightDiff = screenHeight - r.height() - getContentRoot(activity).top
+        val heightDiff = screenHeight - r.height() - location[1]
 
         return heightDiff > screenHeight * KEYBOARD_MIN_HEIGHT_RATIO
     }
