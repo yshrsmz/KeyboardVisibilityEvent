@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 3.0.0-RC2 *(2020-02-28)*
+--------------------------------
+
+- Add missing javadoc.jar and sources.jar
+- Improve status bar height calculation logic [#57](https://github.com/yshrsmz/KeyboardVisibilityEvent/pull/57). Thanks [@anoop44](https://github.com/anoop44)!
+- Fix an wrong method signature [#58](https://github.com/yshrsmz/KeyboardVisibilityEvent/pull/58). Thanks [@bensmiley](https://github.com/bensmiley)!
+
+
 Version 3.0.0-RC1 *(2020-02-14)*
 ----------------------------
 
