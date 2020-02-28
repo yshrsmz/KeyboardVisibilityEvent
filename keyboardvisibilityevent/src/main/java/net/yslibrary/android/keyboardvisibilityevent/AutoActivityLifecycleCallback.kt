@@ -12,7 +12,7 @@ abstract class AutoActivityLifecycleCallback internal constructor(
     private val targetActivity: Activity
 ) : Application.ActivityLifecycleCallbacks {
 
-    override fun onActivityCreated(activity: Activity, bundle: Bundle) {
+    override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
         // no-op
     }
 
