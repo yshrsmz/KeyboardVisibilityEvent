@@ -8,7 +8,7 @@ import android.view.ViewTreeObserver
  * on 28/02/2017
  */
 
-interface Unregistrar {
+fun interface Unregistrar {
 
     /**
      * unregisters the [ViewTreeObserver.OnGlobalLayoutListener] and there by does not provide any more callback to the [KeyboardVisibilityEventListener]
