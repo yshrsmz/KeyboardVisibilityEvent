@@ -2,4 +2,5 @@ ext {
     bintrayUser = System.getenv("BINTRAY_USER")
     bintrayKey = System.getenv("BINTRAY_KEY")
     dryRun = (System.getenv("dryRun") == "true").toString()
+    kotlinVersion = "1.4.10"
 }
