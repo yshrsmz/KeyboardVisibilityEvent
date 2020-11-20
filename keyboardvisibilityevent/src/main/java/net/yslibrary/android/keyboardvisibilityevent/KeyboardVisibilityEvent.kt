@@ -144,7 +144,7 @@ object KeyboardVisibilityEvent {
     }
 
     internal fun getActivityRoot(activity: Activity): View {
-        return getContentRoot(activity).getChildAt(0)
+        return getContentRoot(activity).rootView
     }
 
     private fun getContentRoot(activity: Activity): ViewGroup {
