@@ -1,10 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.jetbrains.dokka'
-apply plugin: 'com.github.dcendents.android-maven'
-
-version="3.0.1"
-group="net.yslibrary.keyboardvisibilityevent"
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
     compileSdkVersion 30
@@ -51,71 +48,17 @@ artifacts {
     archives sourcesJar, javadocJar
 }
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-
-                // Add your description here
-                name group
-                description = POM_DESCRIPTION
-                url POM_URL
-
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id POM_DEVELOPER_ID
-                        name POM_DEVELOPER_NAME
-                    }
-                }
-                scm {
-                    connection POM_SCM_CONNECTION
-                    developerConnection POM_SCM_DEV_CONNECTION
-                    url POM_SCM_URL
-                }
-            }
+mavenPublish {
+    targets {
+        // Modify the existing uploadArchives task
+        uploadArchives {
+            releaseRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            snapshotRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            repositoryUsername = null // This defaults to either the SONATYPE_NEXUS_USERNAME Gradle property or the system environment variable.
+            repositoryPassword = null // This defaults to either the SONATYPE_NEXUS_PASSWORD Gradle property or the system environment variable.
         }
     }
 }
 
-task createPom {
-    pom {
-        project {
-            packaging 'aar'
-
-            name project.name
-            description POM_DESCRIPTION
-            url POM_SCM_URL
-
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                }
-            }
-            scm {
-                connection POM_SCM_CONNECTION
-                developerConnection POM_SCM_DEV_CONNECTION
-                url POM_SCM_URL
-            }
-            developers {
-                developer {
-                    id POM_DEVELOPER_ID
-                    name POM_DEVELOPER_NAME
-                }
-            }
-        }
-    }.writeTo("$buildDir/poms/pom-default.xml").writeTo("pom.xml")
-}
-build.dependsOn createPom
 build.dependsOn dokkaJavadoc
 
-apply from: '../maven-push.gradle'
