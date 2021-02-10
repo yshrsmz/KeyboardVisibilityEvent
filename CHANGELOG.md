@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 3.0.1 *(2021-02-10)*
+--------------------------------
+
+- Update library to no longer pull dependencies from JCenter in preparation for its shutdown on May 1, 2021 Thanks [@barnhill](https://github.com/barnhill)!
+
 Version 3.0.0-RC2 *(2020-02-28)*
 --------------------------------
 

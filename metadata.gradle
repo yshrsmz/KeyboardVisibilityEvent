@@ -1,8 +1,0 @@
-ext {
-    metadata = [
-            userOrg   : 'yshrsmz',
-            groupId   : 'net.yslibrary.keyboardvisibilityevent',
-            website   : 'https://github.com/yshrsmz/KeyboardVisibilityEvent',
-            repository: 'git@github.com:yshrsmz/KeyboardVisibilityEvent.git',
-            licences  : ['Apache-2.0']]
-}

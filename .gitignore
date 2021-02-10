@@ -8,3 +8,4 @@ build
 /local.properties
 /captures
 .envrc
+pom.xml
