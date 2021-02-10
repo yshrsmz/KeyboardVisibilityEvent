@@ -51,7 +51,7 @@ String shell(String command) {
 
 task releng {
     doLast {
-        def tag = "v" + version
+        def tag = "v" + project.properties["VERSION_NAME"]
         println "Release engineering for ${tag}"
 
         def changes = shell "git status -s"
