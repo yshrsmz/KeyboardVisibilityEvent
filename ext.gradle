@@ -1,3 +1,0 @@
-ext {
-    dryRun = (System.getenv("dryRun") == "true").toString()
-}

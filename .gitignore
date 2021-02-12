@@ -9,3 +9,4 @@ build
 /captures
 .envrc
 pom.xml
+*-sec.asc

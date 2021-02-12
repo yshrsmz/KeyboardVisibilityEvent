@@ -12,8 +12,6 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 6
-        versionName project.properties["VERSION_NAME"]
     }
     buildTypes {
         release {
@@ -21,16 +19,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        buildConfig = false
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.30"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-}
-
-task sourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    from android.sourceSets.main.java.srcDirs
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0"
 }
 
 dokkaHtml.configure {
@@ -41,26 +38,29 @@ dokkaHtml.configure {
     }
 }
 
-// build a jar with javadoc
-task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
-    archiveClassifier.set('javadoc')
-    from "$buildDir/javadoc"
+def getGpgKey() {
+    return hasProperty("signingKey") ? signingKey : ""
 }
 
-artifacts {
-    archives sourcesJar, javadocJar
+def getGpgPassword() {
+    return hasProperty("signingKeyPassword") ? signingKeyPassword : ""
 }
 
 mavenPublish {
+    releaseSigningEnabled = !getGpgKey().isEmpty() && !getGpgPassword().isEmpty()
     targets {
-        // Modify the existing uploadArchives task
-        uploadArchives {
-            releaseRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            snapshotRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-            repositoryUsername = null // This defaults to either the SONATYPE_NEXUS_USERNAME Gradle property or the system environment variable.
-            repositoryPassword = null // This defaults to either the SONATYPE_NEXUS_PASSWORD Gradle property or the system environment variable.
+        testMaven {
+            releaseRepositoryUrl = file("${rootProject.buildDir}/localMaven").toURI().toString()
+            snapshotRepositoryUrl = file("${rootProject.buildDir}/localMaven").toURI().toString()
         }
     }
 }
-build.dependsOn dokkaJavadoc
+
+signing {
+    def signingKey = getGpgKey()
+    def password = getGpgPassword()
+    if (!signingKey.isEmpty() && !password.isEmpty()) {
+        useInMemoryPgpKeys(signingKey, password)
+    }
+}
 
