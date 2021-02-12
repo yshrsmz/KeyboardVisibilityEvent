@@ -1,10 +1,15 @@
 Change Log
 ==========
 
-Version 3.0.1 *(2021-02-10)*
+Version 3.0.0-RC3 *(2021-02-10)*
 --------------------------------
 
 - Update library to no longer pull dependencies from JCenter in preparation for its shutdown on May 1, 2021 Thanks [@barnhill](https://github.com/barnhill)!
+- Moved to Maven Central
+- Kotlin 1.4.30
+- androidx.lifecycle 2.3.0
+- Disable BuildConfig generation
+
 
 Version 3.0.0-RC2 *(2020-02-28)*
 --------------------------------
@@ -20,7 +25,7 @@ Version 3.0.0-RC1 *(2020-02-14)*
 - Library converted to Kotlin(v1.3.61)
 - Update targetSdkVersion to 29
 - Android Gradle Plugin 3.5.3
-- Added support for Architecture Components Lifecycle [#48](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/48). Thanks @kletzander](https://github.com/kletzander)!
+- Added support for Architecture Components Lifecycle [#48](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/48). Thanks [@kletzander](https://github.com/kletzander)!
 - Exclude the height of status bar and ActionBar from the height diff calculation to fix [#41](https://github.com/yshrsmz/KeyboardVisibilityEvent/issues/41). Thanks [@anoop44](https://github.com/anoop44)!
 
 
