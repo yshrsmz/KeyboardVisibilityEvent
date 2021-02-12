@@ -7,9 +7,12 @@ Version 3.0.0-RC3 *(2021-02-12)*
 - Update library to no longer pull dependencies from JCenter in preparation for its shutdown on May 1, 2021. Thanks [@barnhill](https://github.com/barnhill)!
 - Moved to Maven Central
 - Kotlin 1.4.30
+- targetSdkVersion is now 30
+- Android Gradle Plugin 4.1.2
 - androidx.lifecycle 2.3.0
 - Disable BuildConfig generation
 - Mark interface with fun for SAM conversion. Thanks [@starsep](https://github.com/starsep)!
+- Use rootView instead of first child to fix [#61]. Thanks [@kuno](https://github.com/kuno)!
 
 
 Version 3.0.0-RC2 *(2020-02-28)*
