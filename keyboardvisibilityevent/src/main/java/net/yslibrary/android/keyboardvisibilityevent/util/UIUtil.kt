@@ -19,6 +19,7 @@ object UIUtil {
      * @param context Context
      * @param target  EditText to focus
      */
+    @Suppress("unused")
     @JvmStatic
     fun showKeyboard(context: Context, target: EditText) {
 
@@ -34,6 +35,7 @@ object UIUtil {
      * @param dialog Dialog
      * @param target EditText to focus
      */
+    @Suppress("unused")
     @JvmStatic
     fun showKeyboardInDialog(dialog: Dialog, target: EditText) {
 
@@ -58,6 +60,7 @@ object UIUtil {
      *
      * @param activity Activity
      */
+    @Suppress("unused")
     @JvmStatic
     fun hideKeyboard(activity: Activity) {
         val view = activity.window.decorView

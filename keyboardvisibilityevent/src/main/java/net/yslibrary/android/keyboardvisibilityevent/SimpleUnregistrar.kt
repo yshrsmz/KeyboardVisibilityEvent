@@ -41,5 +41,4 @@ class SimpleUnregistrar internal constructor(
         activityWeakReference.clear()
         onGlobalLayoutListenerWeakReference.clear()
     }
-
 }

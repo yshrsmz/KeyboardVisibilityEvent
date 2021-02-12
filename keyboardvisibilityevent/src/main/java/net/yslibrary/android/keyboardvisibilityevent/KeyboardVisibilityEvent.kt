@@ -29,6 +29,7 @@ object KeyboardVisibilityEvent {
      * automatically unregistered. Typically a fragment.
      * @param listener Event listener
      */
+    @Suppress("unused")
     @JvmStatic
     fun setEventListener(
         activity: Activity,
@@ -53,6 +54,7 @@ object KeyboardVisibilityEvent {
      * @param activity Activity
      * @param listener KeyboardVisibilityEventListener
      */
+    @Suppress("unused")
     @JvmStatic
     fun setEventListener(
         activity: Activity,
@@ -89,7 +91,8 @@ object KeyboardVisibilityEvent {
 
         // fix for #37 and #38.
         // The window will not be resized in case of SOFT_INPUT_ADJUST_NOTHING
-        val isNotAdjustNothing = softInputAdjust and WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING != WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
+        val isNotAdjustNothing =
+            softInputAdjust and WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING != WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
         require(isNotAdjustNothing) { "Parameter:activity window SoftInputMethod is SOFT_INPUT_ADJUST_NOTHING. In this case window will not be resized" }
 
         if (listener == null) {
