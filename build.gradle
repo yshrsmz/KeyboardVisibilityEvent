@@ -1,8 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-wrapper {
-    gradleVersion = '6.8.2'
-    distributionType = Wrapper.DistributionType.BIN
-}
 
 buildscript {
     apply from: "${rootDir.absolutePath}/ext.gradle"
@@ -65,4 +61,9 @@ task releng {
         shell "git push origin ${tag}"
         shell "git push origin master"
     }
+}
+
+wrapper {
+    gradleVersion = '6.8.2'
+    distributionType = Wrapper.DistributionType.ALL
 }
