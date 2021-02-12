@@ -3,7 +3,7 @@ KeyboardVisibilityEvent
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-KeyboardVisibilityEvent-green.svg?style=flat)](https://android-arsenal.com/details/1/2519)
 [![Android Gems](http://www.android-gems.com/badge/yshrsmz/KeyboardVisibilityEvent.svg?branch=master)](http://www.android-gems.com/lib/yshrsmz/KeyboardVisibilityEvent)
-[![Download](https://api.bintray.com/packages/yshrsmz/maven/keyboardvisibilityevent/images/download.svg) ](https://bintray.com/yshrsmz/maven/keyboardvisibilityevent/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent)
 
 Android Library to handle soft keyboard visibility change event.
 show/hide keyboard method is also included.
@@ -22,7 +22,7 @@ _Please note that as described in this [issue](https://github.com/yshrsmz/Keyboa
 
 ## Installation
 
-from 2.0.0, AAR is distributed via jCenter. The latest version is [![Download](https://api.bintray.com/packages/yshrsmz/maven/keyboardvisibilityevent/images/download.svg) ](https://bintray.com/yshrsmz/maven/keyboardvisibilityevent/_latestVersion)
+AAR is distributed via Maven Central. The latest version is [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent/badge.svg)](https://maven-badges.herokuapp.com/maven-central/net.yslibrary.keyboardvisibilityevent/keyboardvisibilityevent)
 
 ```groovy
 dependencies {
@@ -82,7 +82,7 @@ unregistrar.unregister();
 
 ## License
 
-    Copyright 2015-2020 Shimizu Yasuhiro (yshrsmz)
+    Copyright 2015-2021 Shimizu Yasuhiro (yshrsmz)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
