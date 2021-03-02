@@ -8,7 +8,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31"
         classpath 'com.android.tools.build:gradle:4.1.2'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.4.20'
         classpath 'com.vanniktech:gradle-maven-publish-plugin:0.13.0'
@@ -61,7 +61,7 @@ String shell(String command) {
             System.err.println(err)
         }
     }
-    return proc.in.text;
+    return proc.in.text
 }
 
 task releng {
