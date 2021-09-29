@@ -7,20 +7,15 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-
 import androidx.appcompat.app.AppCompatActivity
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 import net.yslibrary.android.keyboardvisibilityevent.Unregistrar
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var keyboardStatus: TextView
-
     private lateinit var textField: EditText
-
     private lateinit var buttonUnregister: Button
-
     private lateinit var unregistrar: Unregistrar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,13 +30,9 @@ class MainActivity : AppCompatActivity() {
           You can also use {@link KeyboardVisibilityEvent#setEventListener(Activity, KeyboardVisibilityEventListener)}
           if you don't want to unregister the event manually.
          */
-        unregistrar = KeyboardVisibilityEvent.registerEventListener(
-            this,
-            object : KeyboardVisibilityEventListener {
-                override fun onVisibilityChanged(isOpen: Boolean) {
-                    updateKeyboardStatusText(isOpen)
-                }
-            })
+        unregistrar = KeyboardVisibilityEvent.registerEventListener(this) { isOpen ->
+            updateKeyboardStatusText(isOpen)
+        }
 
         updateKeyboardStatusText(KeyboardVisibilityEvent.isKeyboardVisible(this))
 
@@ -65,11 +56,11 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-
         return if (id == R.id.action_settings) {
             true
-        } else super.onOptionsItemSelected(item)
-
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     private fun unregister() {
@@ -78,7 +69,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-
         unregistrar.unregister()
     }
 }
